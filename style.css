@@ -2,16 +2,18 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family:"Quicksand",sans-serif;
 }
 
 body{
 
-    background:#FFF6FB;
+    margin:0;
 
-    color:#333;
-
-    padding:25px;
+    background:linear-gradient(
+        180deg,
+        #fff7fb,
+        #ffeef5
+    );
 
 }
 
@@ -49,13 +51,14 @@ header p{
 
     background:white;
 
-    border-radius:25px;
+    border-radius:28px;
 
-    padding:20px;
+    padding:25px;
 
-    margin-bottom:20px;
+    margin:25px 15px;
 
-    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    box-shadow:
+0 15px 40px rgba(255,170,200,.22);
 
 }
 
@@ -89,21 +92,19 @@ header p{
 
 }
 
-input[type=number]{
+input{
 
     width:100%;
 
-    padding:15px;
-
-    border-radius:15px;
+    padding:18px;
 
     border:none;
 
-    background:#F5F5F5;
+    border-radius:18px;
 
-    margin-bottom:15px;
+    background:#f8f8f8;
 
-    font-size:18px;
+    font-size:22px;
 
 }
 
@@ -113,25 +114,31 @@ button{
 
     border:none;
 
-    padding:15px;
+    border-radius:18px;
 
-    border-radius:15px;
+    padding:18px;
 
-    background:#FF8DB8;
+    font-size:20px;
+
+    font-weight:bold;
 
     color:white;
 
-    font-size:18px;
+    background:
 
-    cursor:pointer;
+    linear-gradient(
+        90deg,
+        #ff88b7,
+        #ff6fa8
+    );
 
-    transition:.3s;
+    transition:.25s;
 
 }
 
-button:hover{
+button:active{
 
-    background:#ff6ea3;
+    transform:scale(.96);
 
 }
 
@@ -139,9 +146,11 @@ button:hover{
 
     text-align:center;
 
-    font-size:70px;
+    font-size:90px;
 
     margin:20px;
+
+    animation:float 2.5s ease-in-out infinite;
 
 }
 
@@ -162,5 +171,39 @@ button:hover{
     font-style:italic;
 
     line-height:1.6;
+
+}
+
+@keyframes float{
+
+0%{
+    transform:translateY(0);
+}
+
+50%{
+    transform:translateY(-8px);
+}
+
+100%{
+    transform:translateY(0);
+}
+
+}   /* <-- THÊM DẤU NÀY */
+
+header{
+
+    padding:20px 0;
+
+}
+
+.card{
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-3px);
 
 }
