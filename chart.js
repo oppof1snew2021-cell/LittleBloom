@@ -1,23 +1,24 @@
-// =========================
-// 📈 Little Bloom Chart v0.3
-// =========================
+// ===============================
+// 📈 Little Bloom - Weight History
+// ===============================
 
-let history =
-JSON.parse(localStorage.getItem("weightHistory")) || [];
+function saveWeight() {
 
-function saveWeight(){
+    const input = document.getElementById("weight");
 
-    const value =
-    document.getElementById("weight").value;
+    const value = input.value;
 
-    if(value==="") return;
+    if (value === "") {
+        alert("🌷 Hãy nhập cân nặng trước nha!");
+        return;
+    }
 
-    history.push({
+    let history =
+        JSON.parse(localStorage.getItem("weightHistory")) || [];
 
-        date:new Date().toLocaleDateString(),
-
-        weight:value
-
+    history.unshift({
+        date: new Date().toLocaleDateString("vi-VN"),
+        weight: value
     });
 
     localStorage.setItem(
@@ -25,17 +26,46 @@ function saveWeight(){
         JSON.stringify(history)
     );
 
-    localStorage.setItem(
-        "weight",
-        value
-    );
+    localStorage.setItem("weight", value);
+
+    input.value = value;
+
+    loadHistory();
 
     alert("🌷 Đã lưu cân nặng!");
+}
+
+function loadHistory() {
+
+    const box = document.getElementById("history");
+
+    if (!box) return;
+
+    let history =
+        JSON.parse(localStorage.getItem("weightHistory")) || [];
+
+    if (history.length === 0) {
+
+        box.innerHTML =
+        "<p>Chưa có dữ liệu 🌱</p>";
+
+        return;
+    }
+
+    box.innerHTML = "";
+
+    history.forEach(item => {
+
+        box.innerHTML += `
+            <p>📅 ${item.date} — <b>${item.weight} kg</b></p>
+        `;
+
+    });
 
 }
 
-function showHistory(){
+window.onload = function(){
 
-    console.log(history);
+    loadHistory();
 
 }
